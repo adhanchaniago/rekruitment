@@ -50,4 +50,9 @@ class M_news extends CI_Model
 		$q="select * FROM category";
 		return $this->db->query($q);
 	}
+	
+	public function check_user($table, $where)
+	{
+		return $this->db->get_where($table, $where);
+	}
 }	
