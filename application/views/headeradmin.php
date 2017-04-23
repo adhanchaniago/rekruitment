@@ -45,7 +45,7 @@
                                     <li class="text-center user-image-back">
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('admin'); ?>"><i class="fa fa-desktop "></i>Admin</a>
+                                        <a href="<?php echo base_url(''); ?>"><i class="fa fa-desktop "></i>Admin</a>
                                         <a href="<?php echo base_url('home/add');?>"><i class="fa fa-edit "></i>Add a Movie</a>
                                     </li>
                                 </ul>

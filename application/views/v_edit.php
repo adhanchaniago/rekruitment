@@ -1,3 +1,5 @@
+<div class="login" style="margin-top:20px;">
+<div class="container"  style="margin-left:280px; width:1000px;">
 <h1>Update</h1>
 <span style="color:red">
 </span>
@@ -23,7 +25,12 @@
 <div class="form-group">
     <label for="username" class="col-sm-2 control-label">category</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="category" placeholder="category" name="category" value="<?php echo $data->category;?>">
+      <select class="form-control" name="id_cat" ><?php
+                echo "<option value='' selected> Edit Kategory </option>";
+                foreach($kategori as $r){echo "
+                <option value=".$r->id_cat.">
+                ".$r->category."</option>";}?>
+      </select>
     </div>
   </div>
   <div class="form-group">

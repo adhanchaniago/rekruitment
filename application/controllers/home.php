@@ -19,7 +19,8 @@ class Home extends CI_Controller
 	
 	public function edit($id)
 	{
-		$where = array('ID' => $id);
+		$where = array('ID' => $id);		
+		$data['kategori'] = $this->m_news->daftar_kategori()->result();
 		$data['data'] = $this->m_news->get_id($where,'news');
 		$this->load->view('headeradmin');
 		$this->load->view('v_edit',$data);
@@ -29,19 +30,19 @@ class Home extends CI_Controller
 	{		
 			$this->form_validation->set_rules('title','title','required');
 			$this->form_validation->set_rules('content','content','required');
-			$this->form_validation->set_rules('category','category','required');
+			$this->form_validation->set_rules('id_cat','id_cat','required');
 			$this->form_validation->set_rules('image','image','required');
 			if ($this->form_validation->run() === TRUE){
 				$ID = $this->input->post('ID');
 				$title= $this->input->post('title');
 				$content = $this->input->post('content');
-				$category = $this->input->post('category');
+				$id_cat= $this->input->post('id_cat');
 				$image = $this->input->post('image');
 
 				$data = array(
 					'title' => $title,
 					'content' => $content,
-					'category' => $category,
+					'id_cat' => $id_cat,
 					'image' => $image
 				);
 

@@ -74,8 +74,8 @@
                                                 <td>".$rownews['category']."</td>
                                                 <td><img src='../foto/".$rownews['image']."'></td>
 												<td>
-                                                    <a href='http://localhost/republika/Home/edit/$id'><div class='btn btn-primary btn-md' type='submit'>Edit</div></a>
-                                                    <a href='http://localhost/republika/Home/del_news/$id'><div class='btn btn-primary btn-md' type='submit' Onclick='return ConfirmDelete();'>Delete</div></a>
+                                                    <a href='http://localhost/rekruitment/Home/edit/$id'><div class='btn btn-primary btn-md' type='submit'>Edit</div></a>
+                                                    <a href='http://localhost/rekruitment/Home/del_news/$id'><div class='btn btn-primary btn-md' type='submit' Onclick='return ConfirmDelete();'>Delete</div></a>
                                                 </td>
                                                 
                                             </tr>
