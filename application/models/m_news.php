@@ -11,7 +11,10 @@ class M_news extends CI_Model
 	
 	public function get_news()
 	{
-		$query = $this->db->get('news');
+		$query = $this->db->select('*')
+						->from('news')
+						->join('category', 'news.id_cat = category.id_cat')
+						->get();
 		return $query->result_array();
 	}
 	
@@ -23,7 +26,12 @@ class M_news extends CI_Model
 	
 	public function get_id($where,$table)
 	{
-		return $this->db->get_where($table,$where);
+		$query = $this->db->select('*')
+						->from($table)
+						->join('category', 'news.id_cat = category.id_cat')
+						->where($where)
+						->get();
+		return $query->row();
 	}
 	
 	public function update($where,$data,$table)

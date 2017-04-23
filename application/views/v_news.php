@@ -1,10 +1,24 @@
-<html>
-<title>Read News</title>
-<style>
- table { 
+<div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>Data yang ada pada database</h2>   
+                    </div>
+
+                    <style>
+           h3{
+              text-align:center; }
+           table { 
+              border-collapse:collapse;
+              border-spacing:0;     
+              font-family:Arial, sans-serif;
               font-size:16px;
               padding-left:300px;
               margin:auto; }
+			img {
+				width:70px;
+				height:70px;
+			}
            table th {
               font-weight:bold;
               padding:10px;
@@ -16,16 +30,16 @@
               padding:10px;
               border-top:1px black solid;
               border-bottom:1px black solid;
-			  border-right:1px black solid;
-			  border-left:1px black solid;
-              text-align:center; }     
+              text-align:center; }         
+           tr:nth-child(even) {
+             background-color: #DFEBF8; }
+             #logout {
          float:right;
          padding:5px;
          border:dashed 1px gray
         }
-</style>
+        </style><br><br>
 <body>
-<a href="<?php echo base_url('home/add');?>"><button type="submit" name="submit" >ADD NEWS</button></a>
 			<script>
 			function ConfirmDelete()
 			{
@@ -37,7 +51,8 @@
 			}
 			</script>
         <br>
-        <br><table style="margin-left: 50px; margin-right: 50px;">
+        <br><table data-toggle="table" data-url= 
+                <table border=1 cellpadding=5 style="margin-left: 50px; margin-right: 50px;">
                                 <tr>
                                     <td>No</td>
                                     <td>TITLE</td>
@@ -49,7 +64,7 @@
                                 <?php
                                     $num=0;
                     foreach($news as $rownews){
-                        $id =$rownews['ID'];
+                        $id = $rownews['ID'];
                                         $num++;
                                         echo "
                                             <tr>
@@ -57,10 +72,10 @@
                                                 <td>".$rownews['title']."</td>
                                                 <td>".$rownews['content']."</td>
                                                 <td>".$rownews['category']."</td>
-                                                <td>".$rownews['image']."</td>
+                                                <td><img src='../foto/".$rownews['image']."'></td>
 												<td>
-                                                    <a href='http://localhost/CI/Home/edit/$id'><div type='submit'>Edit</div></a>
-                                                    <a href='http://localhost/CI/Home/del_news/$id'><div type='submit' Onclick='return ConfirmDelete();'>Delete</div></a>
+                                                    <a href='http://localhost/republika/Home/edit/$id'><div class='btn btn-primary btn-md' type='submit'>Edit</div></a>
+                                                    <a href='http://localhost/republika/Home/del_news/$id'><div class='btn btn-primary btn-md' type='submit' Onclick='return ConfirmDelete();'>Delete</div></a>
                                                 </td>
                                                 
                                             </tr>
@@ -69,6 +84,29 @@
                                 ?>
                             </tbody>
                         </table>
-
+<br><br>
+        <br>
+                </div>              
+                 <!-- /. ROW  -->
+                  <hr />
+              
+                 <!-- /. ROW  -->           
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="<?php echo base_url();?>asset/assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="<?php echo base_url();?>asset/assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="<?php echo base_url();?>asset/assets/js/jquery.metisMenu.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="<?php echo base_url();?>asset/assets/js/custom.js"></script>
+    
+   
 </body>
 </html>

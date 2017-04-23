@@ -5,6 +5,7 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$data['news'] = $this->m_news->get_news();
+		$this->load->view('headeradmin');
 		$this->load->view('v_news', $data);
 	}
 
@@ -19,7 +20,8 @@ class Home extends CI_Controller
 	public function edit($id)
 	{
 		$where = array('ID' => $id);
-		$data['data'] = $this->m_news->get_id($where,'news')->row();
+		$data['data'] = $this->m_news->get_id($where,'news');
+		$this->load->view('headeradmin');
 		$this->load->view('v_edit',$data);
 	}
 	
@@ -57,6 +59,7 @@ class Home extends CI_Controller
 	
 	public function add()
 	{
+		$this->load->view('headeradmin');
 		$this->load->view('v_tambah');
 	}
 	
