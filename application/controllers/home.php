@@ -59,37 +59,36 @@ class Home extends CI_Controller
 	
 	public function add()
 	{
+		$data['kategori'] = $this->m_news->daftar_kategori()->result();
 		$this->load->view('headeradmin');
-		$this->load->view('v_tambah');
+		$this->load->view('v_tambah', $data);
 	}
 	
 	public function addnews()
 	{
-			$this->form_validation->set_rules('title','title','required');
-			$this->form_validation->set_rules('content','content','required');
-			$this->form_validation->set_rules('category','category','required');
-			$this->form_validation->set_rules('image','image','required');
-			if ($this->form_validation->run() === TRUE){
-				$ID = $this->input->post('ID');
-				$title= $this->input->post('title');
-				$content = $this->input->post('content');
-				$category = $this->input->post('category');
-				$image = $this->input->post('image');
-
-				$data = array(
-					'title' => $title,
-					'content' => $content,
-					'category' => $category,
-					'image' => $image
-				);
-
-				if ($this->form_validation->run() === TRUE){
-					$this->m_news->add($data);
-					redirect(base_url('home/index'));
-					
-				}else{
-					redirect(base_url('home/add'));
-				}
-			}
+		$config['upload_path'] = './foto/';
+		$config['allowed_types'] = 'jpg|png';
+		$this->load->library('upload', $config);
+			
+		if ( ! $this->upload->do_upload())
+		{
+			//file gagal diupload -> kembali ke form tambah
+			$this->load->view('headeradmin');
+			$this->load->view('v_tambah');
+		} else {
+			$ID = $this->input->post('ID');
+			$title = $this->input->post('title');
+			$content = $this->input->post('content');
+			$id_cat = $this->input->post('id_cat');
+			$image = $this->upload->data();
+			$data =	array(
+						'title'=>$title,
+						'content'=>$content,
+						'id_cat'=>$id_cat,
+						'image'	=> $image['file_name']
+					);
+			$this->m_news->add($data,'news');
+			redirect(base_url('home/index'));
+		}
 	}
 }
